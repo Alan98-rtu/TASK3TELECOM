@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Message</title>
+</head>
+<body>
+    <h1>Submit a Message</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
+```
+
+- `hello/templates/hello/view_messages.html`:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Messages</title>
+</head>
+<body>
+    <h1>Latest Messages</h1>
+    <ul>
+        {% for message in messages %}
+        <li>{{ message.sender }} -> {{ message.recipient }}: {{ message.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
